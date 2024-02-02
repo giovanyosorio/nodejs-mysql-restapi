@@ -2,7 +2,7 @@ import express from "express"
 const app=express()
 
 
-app.get("/employee",(req,res)=>{
+app.get("/employees",(req,res)=>{
     res.send("Employee details")
 })
 app.post("/employee",(req,res)=>{
