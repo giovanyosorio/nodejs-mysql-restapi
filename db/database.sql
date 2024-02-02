@@ -15,3 +15,7 @@ insert into employee (name, salary) values ('John', 1000);
 insert into employee (name, salary) values ('Jane', 2000);
 insert into employee (name, salary) values ('Doe', 3000);
 insert into employee (name, salary) values ('Smith', 4000);
+
+select * from employee where id=1;
+
+delete from employee where id=1;
