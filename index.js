@@ -1,6 +1,12 @@
 import express from "express"
 const app=express()
+import {pool} from "./db.js"
 
+
+app.get("/ping", async (req,res)=>{
+    const [result]=await pool.query("SELECT 'pong' AS response")
+    res.send(result[0]) 
+})  
 
 app.get("/employees",(req,res)=>{
     res.send("Employee details")
