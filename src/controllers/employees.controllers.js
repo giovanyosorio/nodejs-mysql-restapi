@@ -4,7 +4,10 @@ export const getEmployees = async (req, res) => {
     const [result] = await pool.query("SELECT * FROM employee")
     res.send(result)
 }
-
+export const getEmployee = async (req, res) => {
+    const [result] = await pool.query("SELECT * FROM employee")
+    res.send(result)
+}
 
 export const createEmployee= async(req,res)=>{
     const {name,salary}=req.body
@@ -15,10 +18,7 @@ export const createEmployee= async(req,res)=>{
     }
     else{
         res.send("Error in adding employee")
-    
     }
-    
-
 }
 
 
