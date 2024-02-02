@@ -10,4 +10,8 @@ create table if not exists employee (
 );
 
 describe employee;
-```
+
+insert into employee (name, salary) values ('John', 1000);
+insert into employee (name, salary) values ('Jane', 2000);
+insert into employee (name, salary) values ('Doe', 3000);
+insert into employee (name, salary) values ('Smith', 4000);
