@@ -5,8 +5,15 @@ export const getEmployees = async (req, res) => {
     res.send(result)
 }
 export const getEmployee = async (req, res) => {
-    const [result] = await pool.query("SELECT * FROM employee")
-    res.send(result)
+    const {id}=req.params
+    const [result] = await pool.query("SELECT * FROM employee WHERE id=?",[id])
+    if(result.length===0){
+        res.send("No employee found")
+    }
+    else{
+        console.log(result)
+        res.send(result[0])
+    }
 }
 
 export const createEmployee= async(req,res)=>{
