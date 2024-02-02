@@ -12,7 +12,7 @@ export const getEmployee = async (req, res) => {
     }
     else{
         console.log(result)
-        res.send(result[0])
+        res.status(200).send(result)
     }
 }
 
@@ -24,7 +24,7 @@ export const createEmployee= async(req,res)=>{
         console.log({result})
     }
     else{
-        res.send("Error in adding employee")
+        res.status(500).send("Error in creating employee")
     }
 }
 
@@ -37,10 +37,20 @@ export const deleteEmployees= async(req,res)=>{
         res.send("Employee deleted")
     }
     else{
-        res.send("No employee found")
+        res.status(404).send("No employee found")
     }
 }
 
-export const updateEmployees= (req,res)=>{
-    res.send("Employee details")
+export const updateEmployee= async (req,res)=>{
+   const {id}=req.params
+    const {name,salary}=req.body
+    const [result] = await pool.query("UPDATE employee SET name=IFNULL(?,name),salary=IFNULL(?,salary) WHERE id=?",[name,salary,id])
+    if(result.affectedRows===1){
+        console.log(result)
+    const [row]=await pool.query("SELECT * FROM employee WHERE id=?",[id])
+    res.send(row)
+    }
+    else{
+        res.status(404).send("No employee found")
+    }
 }

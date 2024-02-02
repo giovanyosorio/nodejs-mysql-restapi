@@ -19,3 +19,5 @@ insert into employee (name, salary) values ('Smith', 4000);
 select * from employee where id=1;
 
 delete from employee where id=1;
+
+update employee set name="John Doe" where id=2;
